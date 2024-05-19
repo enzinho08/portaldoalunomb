@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Aluno</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            padding: 20px;
+        }
+        .menu {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+        .menu h3 {
+            margin-top: 0;
+        }
+        .menu form {
+            display: flex;
+            flex-direction: column;
+        }
+        .menu label {
+            margin: 5px 0;
+        }
+        .menu input[type="radio"] {
+            margin-right: 10px;
+        }
+        .menu button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .menu button:hover {
+            background-color: #45a049;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .progress-bar-fill {
+            height: 20px;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            text-align: right;
+            line-height: 20px;
+            color: white;
+        }
+        .dish-result {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .nav-button {
+            flex: 1;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-button:hover {
+            background-color: #45a049;
+        }
+        #resetButton {
+            background-color: #f44336;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #resetButton:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#home">Início</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Registrar</a>
+    </div>
+
+    <div class="container">
+        <div class="nav-buttons">
+            <button class="nav-button" onclick="location.href='notas.html'">Notas</button>
+            <button class="nav-button" onclick="location.href='mensagens.html'">Mensagens</button>
+            <button class="nav-button" onclick="location.href='perfil.html'">Perfil</button>
+            <button class="nav-button" onclick="location.href='portal.html#menu'">Cardápio</button>
+        </div>
+
+        <div class="menu" id="menu">
+            <h2>Cardápio</h2>
+            <form id="menuForm">
+                <h3>Escolha seu cardápio:</h3>
+                <label>
+                    <input type="radio" name="menu" value="vegetariano" required> Vegetariano
+                </label>
+                <label>
+                    <input type="radio" name="menu" value="vegano"> Vegano
+                </label>
+                <label>
+                    <input type="radio" name="menu" value="tradicional"> Tradicional
+                </label>
+                <label>
+                    <input type="radio" name="menu" value="sem-gluten"> Sem Glúten
+                </label>
+                <button type="button" onclick="redirectToMenuOptions()">Escolher Detalhes do Cardápio</button>
+            </form>
+            <button id="resetButton"
+            onclick = "resetVotes()">Zerar Votos</button>
+            <div id="results">
+                <h3>Resultados das Escolhas:</h3>
+                <div class="progress-bar">
+                    <div id="vegetariano-progress" class="progress-bar-fill" style="width: 0%;">Vegetariano: 0%</div>
+                    <div id="vegetariano-dish-result" class="dish-result">Nenhum prato votado ainda</div>
+                </div>
+                <div class="progress-bar">
+                    <div id="vegano-progress" class="progress-bar-fill" style="width: 0%;">Vegano: 0%</div>
+                    <div id="vegano-dish-result" class="dish-result">Nenhum prato votado ainda</div>
+                </div>
+                <div class="progress-bar">
+                    <div id="tradicional-progress" class="progress-bar-fill" style="width: 0%;">Tradicional: 0%</div>
+                    <div id="tradicional-dish-result" class="dish-result">Nenhum prato votado ainda</div>
+                </div>
+                <div class="progress-bar">
+                    <div id="sem-gluten-progress" class="progress-bar-fill" style="width: 0%;">Sem Glúten: 0%</div>
+                    <div id="sem-gluten-dish-result" class="dish-result">Nenhum prato votado ainda</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+</body>
+</html>

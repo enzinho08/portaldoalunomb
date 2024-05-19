@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro do Portal do Aluno</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg'); /* Insira o caminho da imagem de fundo aqui */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .register-form {
+            max-width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+        }
+        input[type="text"], input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-form">
+        <h2>Registro</h2>
+        <form id="registerForm">
+            <label for="register-username">Nome de Usuário</label>
+            <input type="text" id="register-username" name="username" required>
+
+            <label for="register-password">Senha</label>
+            <input type="password" id="register-password" name="password" required>
+
+            <input type="submit" value="Registrar">
+        </form>
+        <p>Já tem uma conta? <a href="login.html">Faça login aqui</a>.</p>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('register-username').value;
+            const password = document.getElementById('register-password').value;
+
+            if (localStorage.getItem('user_' + username)) {
+                alert('Nome de usuário já existe!');
+            } else {
+                localStorage.setItem('user_' + username, password);
+                alert('Registro bem-sucedido! Agora você pode fazer login.');
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>

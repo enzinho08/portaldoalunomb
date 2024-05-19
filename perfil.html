@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .profile-info {
+            margin-bottom: 20px;
+        }
+
+        .profile-info h3 {
+            margin-top: 0;
+        }
+
+        .profile-info p {
+            margin: 0;
+        }
+
+        /* Estilos para o formulário de upload de imagem */
+        #profilePictureForm {
+            margin-bottom: 20px;
+        }
+
+        #profilePictureForm label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #profilePictureForm input[type="file"] {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #profilePictureForm button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .profile-picture {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .profile-picture h3 {
+            margin-top: 0;
+        }
+
+        .profile-picture img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="portal.html">Portal do Aluno</a>
+        <!-- Adicione mais links de navegação conforme necessário -->
+    </div>
+
+    <!-- Container principal -->
+    <div class="container">
+        <h2>Perfil</h2>
+        <!-- Informações do perfil -->
+        <div class="profile-info">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" placeholder="Digite seu nome">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu email">
+            <p>Aluno Marcolino de Barros</p>
+            <!-- Adicione mais informações do perfil conforme necessário -->
+        </div>
+
+        <!-- Formulário para carregar foto de perfil -->
+        <h3>Foto de Perfil</h3>
+        <form id="profilePictureForm" enctype="multipart/form-data">
+            <label for="profilePicture">Selecione uma imagem:</label>
+            <input type="file" id="profilePicture" name="profilePicture">
+            <button type="button" onclick="setProfilePicture()">Salvar</button>
+        </form>
+
+        <!-- Div para exibir a foto de perfil -->
+        <div class="profile-picture">
+            <h3>Visualização da Foto de Perfil</h3>
+            <img id="profilePicturePreview" src="placeholder.jpg" alt="Foto de Perfil">
+        </div>
+    </div>
+
+    <script>
+        function setProfilePicture() {
+            var input = document.getElementById('profilePicture');
+            var preview = document.getElementById('profilePicturePreview');
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>
